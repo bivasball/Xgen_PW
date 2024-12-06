@@ -1,4 +1,4 @@
-npx playwright test ./tests/XgenTests/To_Upload_CSV_XLX_file.spec.js --project chromium --headed
+npx playwright test ./tests/XgenTests/To_Upload_CSV_XLX_file.spec.js --project=chromium --headed
 
 Test file.
 Command line

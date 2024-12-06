@@ -1,0 +1,14 @@
+[
+    {
+        "url": "http://xgendemo.uxli.com",
+        "loginuser": "automate@xgen.com",
+        "loginPassword": "1234",
+        "role": "TEST_AUTOMATE"
+    },
+    {
+        "url": "http://xgendemo.uxli.com",
+        "loginuser": "automate22@xgen.com",
+        "loginPassword": "1234rr",
+        "role": "TEST_AUTOMATE22"
+    }
+]

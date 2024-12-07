@@ -43,7 +43,7 @@ exports.PostgresPage = class PostgresPage {
     await this.page.locator("#Input_L_1_password").fill("Spider20");
     await this.page.getByLabel("Scan Changes with User").check();
     await this.page.getByText("Create a SourceSrc Type:").click();
-
+    await this.page.pause();
     await this.page.getByRole("button", { name: "Validate" }).click();
     //("Verify the Pop up success")
     const popup = this.page.locator(`xpath=//*[@id='1']/div[1]/div[2]/p`);
@@ -61,7 +61,7 @@ exports.PostgresPage = class PostgresPage {
       this.page.locator(`xpath=//*[@id='2']/div[1]/div[2]/p`)
     ).toContainText("Source PG_SALES_DB created with id");
 
-    //await this.page.pause();
+    await this.page.pause();
   }
 
   async verifyIfTheSourceIsAlreadyPresent() {
@@ -115,7 +115,51 @@ exports.PostgresPage = class PostgresPage {
   }
 
 
-//------------------to upload file ------------------//
+//------------------to new code to create PG database ------------------//
+async createPostgresConnectionLatest() {
+
+
+  await this.verifyIfTheSourceIsAlreadyPresent();
+
+  await this.page
+    .getByRole("link", { name: "Source Connections Source" })
+    .click();
+
+  await this.page.getByRole('link', { name: 'Add' }).click();
+  await this.page.getByRole('button', { name: 'Postgres' }).click();
+  await expect(this.page.getByText('Create a Source')).toBeVisible();
+
+  await this.page.locator("xpath=//*[@data-testid='CancelIcon']").click();
+
+  await this.page.getByLabel('Source Name *').fill('PG_SALES_DB');
+  await this.page.getByLabel('Source Description *').fill('Pg sales db');
+  await this.page.locator('#Input_L_1_host').fill('xgen-dev.ckvh7cnonk8s.us-east-1.rds.amazonaws.com');
+  await this.page.locator('#Input_L_1_database').fill('f1race');
+
+  await this.page.getByPlaceholder('Type and press enter...').fill('sales');
+  await this.page.locator('#Input_L_1_username').fill('sa');
+  await this.page.locator('#Input_L_1_password').fill('Spider20');
+  await this.page.getByLabel('Scan Changes with User').check();
+
+  await expect(this.page.getByRole('button', { name: 'Validate' })).toBeVisible();
+  await expect(this.page.getByRole('button', { name: 'Create' })).toBeVisible();
+  await expect(this.page.getByRole('button', { name: 'Close' })).toBeVisible();
+  await this.page.getByRole('button', { name: 'Validate' }).click();
+
+  await this.page.getByRole('button', { name: 'Create' }).click();
+  await this.page.waitForTimeout(3000);
+  await this.page.getByRole('button', { name: 'Refresh' }).click();
+
+  await this.page.waitForTimeout(5000);
+  await expect(this.page.getByText('PG_SALES_DB')).toBeVisible();
+
+
+}
+
+
+
+
+
 
 
 };

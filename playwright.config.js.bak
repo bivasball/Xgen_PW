@@ -11,8 +11,6 @@ const { defineConfig, devices } = require('@playwright/test');
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  //below is added by bivas to reuse the session and cookie and working fine for opensoure.demo-// Commenting below.
-  //globalSetup: require.resolve("./utilities/global-setup"),
   //testDir: './tests',
   testDir: './tests/XgenTests',
   /* Run tests in files in parallel */

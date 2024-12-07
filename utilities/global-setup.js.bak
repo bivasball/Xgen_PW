@@ -1,0 +1,25 @@
+const {chromium, expect} =require("@playwright/test");
+
+module.exports = async config =>{
+const browser = await chromium.launch({headless:false});
+const page = await browser.newPage();
+  await page.goto('http://xgendemo.uxli.com/login?');
+  await page.getByLabel('Username *').click();
+  await page.getByLabel('Username *').fill('automate@xgen.com');
+  await page.getByLabel('Username *').press('Tab');
+  await page.getByLabel('Password *').fill('1234');
+  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByLabel('', { exact: true }).click();
+  await page.getByRole('option', { name: 'TEST_AUTOMATE' }).click();
+
+  await expect(page.getByRole('heading', { name: 'Welcome, Automation!' })).toBeVisible();
+
+
+
+
+//---------------//
+await page.context().storageState({path:"user.json"});
+await browser.close();
+
+
+}

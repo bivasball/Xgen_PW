@@ -22,6 +22,7 @@ test("To upload file CSV file company_data", async ({ page }) => {
   });
 
   await test.step("Log out", async () => {
+    const Login = new LoginPage(page);
     await Login.logout();
   });
 });
@@ -46,6 +47,7 @@ test("To upload XLSX file - CategoryForecast.xlsx ", async ({ page }) => {
   });
 
   await test.step("Log out", async () => {
+    const Login = new LoginPage(page);
     await Login.logout();
   });
 });
@@ -71,6 +73,7 @@ test("To upload XLSX file - Company Survey.xlsx ", async ({ page }) => {
   });
 
   await test.step("Log out", async () => {
+    const Login = new LoginPage(page);
     await Login.logout();
   });
 });

@@ -1,3 +1,12 @@
+# TO RUN ALL THE TEST #
+
+npx playwright test --project=chromium --headed
+# TO SEE THE REPORT #
+IN FOLDER --> playwright-reporter
+
+-------------------------------------------------------------------------
+
+
 npx playwright test ./tests/XgenTests/To_Upload_CSV_XLX_file.spec.js --project=chromium --headed
 
 Test file.
